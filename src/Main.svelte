@@ -3,7 +3,6 @@
   import type { PyProxy } from "pyodide/ffi";
 
   import source from "../main.py?raw";
-  import { onDestroy } from "svelte";
 
   export let py: PyodideInterface;
 
@@ -15,8 +14,6 @@
       return eval_code_async(source, filename="main.py", return_mode="last_expr_or_assign")
     run
   `);
-
-  onDestroy(run.destroy);
 </script>
 
 {#await run(source) then result}
