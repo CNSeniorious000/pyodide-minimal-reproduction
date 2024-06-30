@@ -1,0 +1,61 @@
+name: CI
+
+on: [push, fork, pull_request, workflow_dispatch, workflow_call]
+
+jobs:
+
+  typos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crate-ci/typos@master
+
+  py:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Install dependencies
+        run: |
+          pip install uv
+          uv tool run pdm export --pyproject | uv pip install --system -r -
+          yarn global add pyright
+      - name: Ruff
+        run: |
+          ruff format --check --diff
+          ruff check --diff
+      - name: Pyright
+        run: pyright --stats
+
+  js:
+    strategy:
+      matrix:
+        os: [ubuntu, windows, macos]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull changes
+        run: git pull
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Install
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check
+        run: pnpm check
