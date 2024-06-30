@@ -41,17 +41,17 @@ jobs:
       - name: Pull changes
         run: git pull
 
-      - name: Install pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: latest
 
-      - name: Set node
+      - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
 
-      - name: Install
+      - name: Install dependencies
         run: pnpm install
 
       - name: Lint
@@ -59,3 +59,29 @@ jobs:
 
       - name: Check
         run: pnpm check
+
+      - uses: actions/upload-artifact@v4
+        if: matrix.os == 'ubuntu'
+        with:
+          path: pnpm-lock.yaml
+          name: lockfile
+
+  lock:
+    needs: [typos, py, js]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: lockfile
+      - name: Commit lockfile
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          git add pnpm-lock.yaml -f
+          locked_branch_name=$(git branch --show-current)-locked
+          git checkout -b $locked_branch_name
+          git commit -m 'add `pnpm-lock.yaml`'
+          git push --set-upstream origin $locked_branch_name -f
