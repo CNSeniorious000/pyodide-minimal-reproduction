@@ -52,7 +52,9 @@ jobs:
 
   invoke:
     permissions:
+      pages: write
+      id-token: write
       contents: write
     needs: update
     uses: ./.github/workflows/ci.yml
-    if: needs.taze.outputs.updated == 'true'
+    if: needs.update.outputs.updated == 'true'
