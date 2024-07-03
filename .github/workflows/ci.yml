@@ -78,6 +78,7 @@ jobs:
           name: lockfile
       - name: Commit lockfile
         run: |
+          git pull || true
           git config --local user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
           git add pnpm-lock.yaml -f
