@@ -9,9 +9,9 @@
   py.FS.writeFile("main.py", source);
 
   const run: PyProxy & ((source: string) => Promise<any>) = py.runPython(`
-    def run(source):
+    async def run(source):
       from pyodide.code import eval_code_async
-      return eval_code_async(source, filename="main.py", return_mode="last_expr_or_assign")
+      return str(await eval_code_async(source, filename="main.py", return_mode="last_expr_or_assign"))
     run
   `);
 </script>
