@@ -26,17 +26,20 @@ jobs:
           node-version: 20.x
 
       - name: Check updates
+        working-directory: app
         id: taze
         run: pnpx taze -a --failOnOutdated
         continue-on-error: true
 
       - name: Updates dependencies
+        working-directory: app
         if: steps.taze.outcome == 'failure'
         run: |
           pnpx taze -w
           pnpm update
 
       - name: Commit changes
+        working-directory: app
         if: steps.taze.outcome == 'failure'
         run: |
           git config --local user.name 'github-actions[bot]'
