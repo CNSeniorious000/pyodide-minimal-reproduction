@@ -22,4 +22,4 @@ dist
 .fleet
 .idea
 
-index.d.ts
+/python/index.d.ts

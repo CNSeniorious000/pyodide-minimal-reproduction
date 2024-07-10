@@ -6,6 +6,7 @@
     "build": "vite build --sourcemap",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+    "postinstall": "echo export default {} > python/index.d.ts",
     "dev": "vite dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.22.0",
+    "@types/node": "latest",
     "@unocss/eslint-plugin": "^0.61.3",
     "eslint": "^9.6.0",
     "eslint-plugin-format": "^0.1.2",
