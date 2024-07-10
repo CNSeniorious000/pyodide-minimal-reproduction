@@ -4,5 +4,5 @@ import Unocss from "unocss/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [Unocss(), sveltekit(), flattenDir({ exclude: [/node_modules/, /src/, /^\./] })],
+  plugins: [Unocss(), sveltekit(), flattenDir()],
 });
