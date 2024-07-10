@@ -21,3 +21,5 @@ dist
 .vscode
 .fleet
 .idea
+
+index.d.ts
