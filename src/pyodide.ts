@@ -1,5 +1,6 @@
 import packageJson from "../package.json?raw";
 import { cacheSingleton } from "./utils";
+import { tick } from "svelte";
 import { toast } from "svelte-sonner";
 
 export const {
@@ -12,8 +13,8 @@ indexURL = `https://cdn.promplate.dev/pyodide/v${version}/`; // to prevent 429
 export const getPy = cacheSingleton(async () => {
   const { loadPyodide } = await import("pyodide");
   const py = await loadPyodide({ indexURL });
-  py.setStdout({ batched: toast });
-  py.setStderr({ batched: toast.warning });
+  py.setStdout({ batched: output => tick().then(() => toast.message(output)) });
+  py.setStderr({ batched: output => tick().then(() => toast.warning(output)) });
   py.globals.set("input", prompt);
   // @ts-expect-error for debugging
   window.pyodide = window.py = py;
