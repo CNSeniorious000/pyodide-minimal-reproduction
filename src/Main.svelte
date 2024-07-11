@@ -14,12 +14,30 @@
 
 {#await run() then [result, traceback]}
   {#if !traceback}
-    <div class="text-green-3">
+    <div class="green">
       {result}
     </div>
   {:else}
-    <div class="text-red-4">
+    <div class="red">
       {traceback}
     </div>
   {/if}
 {/await}
+
+<style>
+  .green {
+    --uno: text-green-3;
+  }
+
+  .green::selection {
+    --uno: bg-green-3/15;
+  }
+
+  .red {
+    --uno: text-red-4;
+  }
+
+  .red::selection {
+    --uno: bg-red-4/15;
+  }
+</style>
