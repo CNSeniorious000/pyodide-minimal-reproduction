@@ -1,3 +1,5 @@
+import type { PyProxyWithSet } from "pyodide/ffi";
+
 import packageJson from "../package.json?raw";
 import { cacheSingleton } from "./utils";
 import { tick } from "svelte";
@@ -15,7 +17,9 @@ export const getPy = cacheSingleton(async () => {
   const py = await loadPyodide({ indexURL });
   py.setStdout({ batched: output => tick().then(() => toast.message(output)) });
   py.setStderr({ batched: output => tick().then(() => toast.warning(output)) });
-  py.globals.set("input", prompt);
+  const globals = py.globals as PyProxyWithSet;
+  globals.set("input", prompt);
+  globals.set("toast", toast);
   // @ts-expect-error for debugging
   window.pyodide = window.py = py;
   return py;
