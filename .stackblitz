@@ -1,0 +1,5 @@
+{
+  "compileTrigger": "keystroke",
+  "installDependencies": false,
+  "startCommand": "cd app && pnpm i --prod && pnpm svelte-kit sync && pnpm dev"
+}
