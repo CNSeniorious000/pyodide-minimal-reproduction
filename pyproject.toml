@@ -1,7 +1,7 @@
 [project]
 requires-python = ">=3.12"
 dependencies = [
-    "ruff~=0.3.7",
+    "ruff~=0.5.3",
     "webtypy~=0.1.7",
     "micropip~=0.6.0",
     "pyodide-py==0.26.1",
@@ -20,29 +20,22 @@ line-length = 200
 line-length = 200
 
 [tool.ruff.lint]
-select = [
-    # isort
-    "I",
-    # pep8-naming
-    "N",
-    # pyflakes
-    "F",
-    # pycodestyle
-    "E",
-    "W",
-    # ruff
-    "RUF",
+extend-select = [
+    "I",    # isort
+    "N",    # pep8-naming
+    "W",    # pycodestyle
+    "UP",   # pyupgrade
+    "TRY",  # tryceratops
+    "RUF",  # ruff
+    "FURB", # refurb
+    "C4",   # flake8-comprehensions
+    "PIE",  # flake8-pie
+    "RSE",  # flake8-raise
 ]
 ignore = [
-    # Failed to parse pyproject.toml: missing field `name`
-    "RUF200",
-    # Module level import not at top of file
-    "E402",
-    "F402",
-    # `... import *` used; unable to detect undefined names
-    "F403",
-    # `await` statement outside of a function
-    "F704",
+    "RUF200", # Failed to parse pyproject.toml: missing field `name`
+    "F403",   # `... import *` used; unable to detect undefined names
+    "F704",   # `await` statement outside of a function
 ]
 
 [tool.pyright]
