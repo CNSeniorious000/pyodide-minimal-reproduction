@@ -2,7 +2,7 @@
   import type { PyodideInterface } from "pyodide";
   import type { PyProxy } from "pyodide/ffi";
 
-  import sources from "../python";
+  import sources from "../../python";
   import exec from "./exec.py?raw";
 
   export let py: PyodideInterface;
