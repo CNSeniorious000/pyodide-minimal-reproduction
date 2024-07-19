@@ -27,6 +27,7 @@
     "vite": "^5.3.4"
   },
   "stackblitz": {
+    "compileTrigger": "keystroke",
     "installDependencies": false,
     "startCommand": "pnpm i --prod && pnpm svelte-kit sync && pnpm dev"
   },
