@@ -70,7 +70,7 @@ jobs:
           name: lockfile
 
   lock:
-    if: github.event_name == 'workflow_dispatch' 
+    if: github.event_name != 'pull_request' 
     needs: [typos, py, js]
     runs-on: ubuntu-latest
     permissions:
