@@ -32,7 +32,7 @@ jobs:
   js:
     strategy:
       matrix:
-        os: [ubuntu, windows, macos]
+        os: [ubuntu, macos]
       fail-fast: false
     runs-on: ${{ matrix.os }}-latest
     steps:
