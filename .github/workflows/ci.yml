@@ -86,7 +86,7 @@ jobs:
           git pull || true
           git config --local user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
-          sed -i 'app/pnpm-lock.yaml/d' .gitignore
+          sed -i '/pnpm-lock.yaml/d' .gitignore
           git add app/pnpm-lock.yaml .gitignore
           rm -rf .github
           locked_branch_name=$(git branch --show-current)-locked
