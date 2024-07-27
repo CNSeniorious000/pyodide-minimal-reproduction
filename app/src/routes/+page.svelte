@@ -1,7 +1,8 @@
 <script>
   import Main from "../Main.svelte";
-  import { getPy, version } from "../pyodide";
+  import { getPy } from "../pyodide";
   import { browser } from "$app/environment";
+  import { version } from "pyodide/package.json";
 
   let t = 0;
 
