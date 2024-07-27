@@ -4,7 +4,7 @@ dependencies = [
     "ruff~=0.5.3",
     "webtypy~=0.1.7",
     "micropip~=0.6.0",
-    "pyodide-py==0.26.1",
+    "pyodide-py==0.26.2",
 ]
 
 [tool.pdm]
