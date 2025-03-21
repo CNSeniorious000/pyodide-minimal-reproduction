@@ -4,7 +4,7 @@ import { defineConfig, presetWebFonts, presetWind3, transformerDirectives, trans
 const config = defineConfig({
   extractors: [extractorSvelte()],
   transformers: [transformerVariantGroup(), transformerDirectives()],
-  presets: [presetWind3(), presetWebFonts({ provider: "bunny", fonts: { mono: "Jetbrains mono" } })],
+  presets: [presetWind3({ preflight: "on-demand" }), presetWebFonts({ provider: "bunny", fonts: { mono: "Jetbrains mono" } })],
 });
 
 export default config;
