@@ -91,7 +91,7 @@ def find_packages_to_install(source: str):
 
 async def auto_load_packages(source: str):
     if packages := find_packages_to_install(source):
-        prompt = f"auto installing {"\n".join(f"{name}=={version}" for name, version in packages)}"
+        prompt = f"auto installing {'\n'.join(f'{name}=={version}' for name, version in packages)}"
         toast.loading(prompt, id=prompt)
         await load_packages_from_imports(source)
         toast.success(prompt, id=prompt)
