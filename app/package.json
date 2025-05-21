@@ -20,7 +20,7 @@
     "@unocss/reset": "^66.1.2",
     "pyodide": "0.27.5",
     "rollup-plugin-flatten-dir": "^1.0.1",
-    "svelte": "^4.2.19",
+    "svelte": "^4.2.20",
     "svelte-sonner": "^0.3.28",
     "typescript": "^5.8.3",
     "unocss": "^66.1.2",
@@ -32,7 +32,7 @@
     "@unocss/eslint-plugin": "^66.1.2",
     "eslint": "^9.27.0",
     "eslint-plugin-format": "^1.0.1",
-    "eslint-plugin-svelte": "^3.8.1",
+    "eslint-plugin-svelte": "^3.8.2",
     "svelte-check": "^4.2.1"
   }
 }
