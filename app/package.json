@@ -30,7 +30,7 @@
     "@antfu/eslint-config": "^4.16.1",
     "@types/node": "latest",
     "@unocss/eslint-plugin": "^66.3.2",
-    "eslint": "^9.30.0",
+    "eslint": "^9.30.1",
     "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-svelte": "^3.10.1",
     "svelte-check": "^4.2.2"
